@@ -1,0 +1,10 @@
+{
+    "id": "OS",
+    "name": "Project Oasis",
+    "author": "Kolibri",
+	"version": {"major":'0', "minor":'0', "patch":'1'},
+    "description": "help",
+    "gameVersion": "0.98.1a",
+    "jars":[""],
+    "modPlugin":""
+}

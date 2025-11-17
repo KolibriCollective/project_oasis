@@ -1,0 +1,10 @@
+{
+    "masterVersionFile" : "https://github.com/KolibriCollective/project_oasis"
+    "modName" : "Project Oasis"
+    "modVersion" : 
+    {
+        "major":0,
+        "minor":0,
+        "patch":1
+    }
+}

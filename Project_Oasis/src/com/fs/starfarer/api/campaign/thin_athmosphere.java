@@ -1,20 +1,14 @@
-/*
- * Alright gang what I believe to have found is 
- * one this file should load a package that is a java file which is compressed in a jar file
- * then it will change smth in the package 
- * I don't understand what apply and unapply do or why you would want to unapply it
- * wait that's not how it is in actual condition and not the one that aren't made yet
- */
+package com.fs.starfarer.api.campaign;
 
-//package /*has yet to be implemented*/;
-
+import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Industries;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.util.Misc;
-import data.src.data.scripts.campaign.OS_txt.txt;
+
+import com.fs.starfarer.api.OS_txt;
 /*
  * those are the package that I believe we need 
  * I think we need to add them to our jar file for them to function properly tho
@@ -45,26 +39,30 @@ public class thin_athmosphere extends BaseHazardCondition{
 
         Industry industry = market.getIndustry(Industries.POPULATION);
         if(industry!=null){
-            industry.getDemand(Commodities.METALS).getQuantity().modifyMult(id + "_0", Commodities.METALS, METALS_DEMAND,txt("thin_athmophere_HEAVY_MACHINERUY_DEMAND"));
-            industry.getDemand(Commodities.HEAVY_MACHINERY).getQuantity().modifyMult(id + "_0", Commodities.HEAVY_MACHINERY, HEAVY_MACHINERY_DEMAND,txt("thin_athmophere_METAL_DEMAND"));
+            industry.getDemand(Commodities.METALS).getQuantity().modifyMult(id + "_0", Commodities.METALS, METALS_DEMAND, txt("thin_athmophere_HEAVY_MACHINERUY_DEMAND"));
+            industry.getDemand(Commodities.HEAVY_MACHINERY).getQuantity().modifyMult(id + "_0", Commodities.HEAVY_MACHINERY, HEAVY_MACHINERY_DEMAND, txt("thin_athmophere_METAL_DEMAND"));
         }
-        Industry industry = market.getIndustry(Industries.MINING);
-        if(industry!=null){
-            if (industry.isFunctional()) {
-                industry.Supply(id + "_0",Commodities.ORE, ORE_BONUS,"");
-                industry.Supply(id + "_0",Commodities.RARE_ORE, ORE_BONUS,"");
-                industry.Supply(id + "_0",Commodities.ORGANICS, ORE_BONUS,"");
-                industry.Supply(id + "_0",Commodities.VOLATILES, ORE_BONUS,"");
+        Industry industry2 = market.getIndustry(Industries.MINING);
+        if(industry2!=null){
+            if (industry2.isFunctional()) {
+                industry2.Supply(id + "_0",Commodities.ORE, ORE_BONUS,"");
+                industry2.Supply(id + "_0",Commodities.RARE_ORE, ORE_BONUS,"");
+                industry2.Supply(id + "_0",Commodities.ORGANICS, ORE_BONUS,"");
+                industry2.Supply(id + "_0",Commodities.VOLATILES, ORE_BONUS,"");
             } 
             
             else {
-                industry.getSupply(Commodities.ORE).getQuantity().unmodifyFlat(id + "_0");
-                industry.getSupply(Commodities.RARE_ORE).getQuantity().unmodifyFlat(id + "_0");
-                industry.getSupply(Commodities.ORGANICS).getQuantity().unmodifyFlat(id + "_0");
-                industry.getSupply(Commodities.VOLATILES).getQuantity().unmodifyFlat(id + "_0");
+                industry2.getSupply(Commodities.ORE).getQuantity().unmodifyFlat(id + "_0");
+                industry2.getSupply(Commodities.RARE_ORE).getQuantity().unmodifyFlat(id + "_0");
+                industry2.getSupply(Commodities.ORGANICS).getQuantity().unmodifyFlat(id + "_0");
+                industry2.getSupply(Commodities.VOLATILES).getQuantity().unmodifyFlat(id + "_0");
             }
         }
 
+    }
+    private Object txt(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'txt'");
     }
     public void unapply(String id) {
         this.market.getAccessbilityMod().unmodifyFlat(id);
@@ -99,4 +97,7 @@ public class thin_athmosphere extends BaseHazardCondition{
  * 
  * 4. and finally we will debug everything we have done so far, so we make the process smth we can not only replicate but make sure that it 
  * is good
+ * 
+ * (10:49)
+ * fixed the package error
  */
