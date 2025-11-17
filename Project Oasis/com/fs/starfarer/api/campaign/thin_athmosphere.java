@@ -6,7 +6,7 @@
  * wait that's not how it is in actual condition and not the one that aren't made yet
  */
 
-package /*has yet to be implemented*/;
+//package /*has yet to be implemented*/;
 
 import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;

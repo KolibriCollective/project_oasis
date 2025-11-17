@@ -57,3 +57,16 @@ added  :
 OS_text.java : 
 added function function called OS_text
 
+2025-11-17 
+
+added files : 
+OS_modPlugin.java 
+
+modfied files : 
+mod_info has had the jar and pluging info 
+removed as we have not made those file 
+
+current error to fix : 
+`package data.scripts;`
+is returning an error 
+

@@ -1,3 +1,4 @@
+package data.scripts;
 /*
  * this a been taken from the mod UnkownSkies and slightly modified
  * this function was made by Tartiflette
