@@ -7,7 +7,7 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Industries;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.util.Misc;
-
+import com.fs.starfarer.api.impl.campaign.econ.impl.PopulationAndInfrastructure;
 import com.fs.starfarer.api.OS_txt;
 /*
  * those are the package that I believe we need 
@@ -35,7 +35,7 @@ public class thin_athmosphere extends BaseHazardCondition{
 
     public void apply(String id) {
 
-        this.market.getAccessbilityMod().modifyFlat(id,ACCESSIBILITY_BONUS/100, txt("thin_atmosphere_ACCESSIBILTY_BONUS"));
+        .getAccessibilityBonus().modifyFlat(id,ACCESSIBILITY_BONUS/100, txt("thin_atmosphere_ACCESSIBILTY_BONUS"));
 
         Industry industry = market.getIndustry(Industries.POPULATION);
         if(industry!=null){
@@ -59,10 +59,6 @@ public class thin_athmosphere extends BaseHazardCondition{
             }
         }
 
-    }
-    private Object txt(String string) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'txt'");
     }
     public void unapply(String id) {
         this.market.getAccessbilityMod().unmodifyFlat(id);
@@ -99,5 +95,11 @@ public class thin_athmosphere extends BaseHazardCondition{
  * is good
  * 
  * (10:49)
- * fixed the package error
+ * fixed the package error 
+ * (15:46)
+ * now that all of the package are present and working we can finally actually work on seeing where we messed up in the code 
+ * so 
+ * getAccessibilityMod isn't actually a function 
+ * Supply isn't a commmand for industry ??
+ * txt still does not work 
  */
