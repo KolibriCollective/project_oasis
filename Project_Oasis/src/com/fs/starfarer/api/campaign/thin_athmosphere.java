@@ -9,6 +9,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.impl.campaign.econ.impl.PopulationAndInfrastructure;
 import com.fs.starfarer.api.OS_txt;
+import com.fs.starfarer.api.Global;
 /*
  * those are the package that I believe we need 
  * I think we need to add them to our jar file for them to function properly tho
@@ -25,43 +26,43 @@ import com.fs.starfarer.api.OS_txt;
  */
 
 
-public class thin_athmosphere extends BaseHazardCondition{
+public class thin_athmosphere extends BaseHazardCondition {
 
     public final float ACCESSIBILITY_BONUS = 5f;
-    public final float ORE_BONUS = 1;
-    public final float HEAVY_MACHINERY_DEMAND = 1;
-    public final float METALS_DEMAND = 1; 
+    public final int ORE_BONUS = 1;
+    public final int HEAVY_MACHINERY_DEMAND = 1;
+    public final int METALS_DEMAND = 1; 
 
 
     public void apply(String id) {
 
-        .getAccessibilityBonus().modifyFlat(id,ACCESSIBILITY_BONUS/100, txt("thin_atmosphere_ACCESSIBILTY_BONUS"));
+        market.getAccessibilityMod().modifyFlat(id,ACCESSIBILITY_BONUS/100,txt("thin_atmosphere_ACCESSIBILTY_BONUS"));
 
         Industry industry = market.getIndustry(Industries.POPULATION);
         if(industry!=null){
             industry.getDemand(Commodities.METALS).getQuantity().modifyMult(id + "_0", Commodities.METALS, METALS_DEMAND, txt("thin_athmophere_HEAVY_MACHINERUY_DEMAND"));
             industry.getDemand(Commodities.HEAVY_MACHINERY).getQuantity().modifyMult(id + "_0", Commodities.HEAVY_MACHINERY, HEAVY_MACHINERY_DEMAND, txt("thin_athmophere_METAL_DEMAND"));
         }
-        Industry industry2 = market.getIndustry(Industries.MINING);
-        if(industry2!=null){
-            if (industry2.isFunctional()) {
-                industry2.Supply(id + "_0",Commodities.ORE, ORE_BONUS,"");
-                industry2.Supply(id + "_0",Commodities.RARE_ORE, ORE_BONUS,"");
-                industry2.Supply(id + "_0",Commodities.ORGANICS, ORE_BONUS,"");
-                industry2.Supply(id + "_0",Commodities.VOLATILES, ORE_BONUS,"");
+        industry = market.getIndustry(Industries.MINING);
+        if(industry!=null){
+            if (industry.isFunctional()) {
+                industry.supply(id + "_0",Commodities.ORE, ORE_BONUS,"");
+                industry.supply(id + "_0",Commodities.RARE_ORE, ORE_BONUS,"");
+                industry.supply(id + "_0",Commodities.ORGANICS, ORE_BONUS,"");
+                industry.supply(id + "_0",Commodities.VOLATILES, ORE_BONUS,"");
             } 
             
             else {
-                industry2.getSupply(Commodities.ORE).getQuantity().unmodifyFlat(id + "_0");
-                industry2.getSupply(Commodities.RARE_ORE).getQuantity().unmodifyFlat(id + "_0");
-                industry2.getSupply(Commodities.ORGANICS).getQuantity().unmodifyFlat(id + "_0");
-                industry2.getSupply(Commodities.VOLATILES).getQuantity().unmodifyFlat(id + "_0");
+                industry.getSupply(Commodities.ORE).getQuantity().unmodifyFlat(id + "_0");
+                industry.getSupply(Commodities.RARE_ORE).getQuantity().unmodifyFlat(id + "_0");
+                industry.getSupply(Commodities.ORGANICS).getQuantity().unmodifyFlat(id + "_0");
+                industry.getSupply(Commodities.VOLATILES).getQuantity().unmodifyFlat(id + "_0");
             }
         }
 
     }
     public void unapply(String id) {
-        this.market.getAccessbilityMod().unmodifyFlat(id);
+        market.getAccessibilityMod().unmodifyFlat(id);
     }
 }
 
