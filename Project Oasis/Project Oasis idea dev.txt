@@ -1,0 +1,110 @@
+Mode idea for starsector : Project Oasis
+changing the negative planetary condition type to make them more intersting
+and then create new condition meant to counter their less than desirable effect 
+those new condition will hopefully reasult in the improvement of three thing : 
+
+1. make planet trully feel different 
+2. give a face to the people living in your market
+3. make the new colonized planet truly feel unique
+
+there should be multiple way of handeling a negative condition 
+this way two planet with the same condition can still be different from one another
+some new condition should counter multiple one
+
+the default multiple choice should be along the line of 
+1. (100k to 200k) credit, easy to deploy but barely worth it 
+2. (300k to 500k) credit, harder remove all of the probleme but create new one that can be reduced with another decision
+3. (1M to 10M) credit, this would require basically the same level of ressource has reactivating a megastructure in AOTD volt of knowledge but will come with increadible benefit and revome all negative effect without new one
+
+all choice can be upgraded along the way into truly increadible form, the cheaper the price at the start the more pricey the upgrade are
+
+the price of those improvement should be precier the worse the negative condition is 
+
+the negative effect should be made worse not just by increasing the planetary hazard but also by adding new probleme
+all negative condition should have at least one bonus that will stay after the counter is built 
+the bonus should be good but not extremely good, meaning that other factor will play the major role in deciding if the planet is worth colonizing or not 
+instead of it being always worth it
+
+all of the improvement must be understandable, has oposed to like it's new tech black hole make the planet more spiny or other such thing
+
+every improvement will be a planetary condition, not a building, not terraforming, not an item
+
+while they might improve ressources it will be done so inderectly (exemple +1 to ore and rare ore production and such, and not make the ore condition go from normal to abundant) 
+
+every planetary condition must have at least 2 counter that are only available for this specific one
+
+no counter will be able to counter every condition, this would go against the very idea of making planet different 
+
+if a new counter could lead to a new negative effect or worse a disaster this should be told explicity when the player look at the option (this is to make sure the player understand what they're doing and doens't feel like a punishment) 
+upgrade for those should also be available at the start but for a price increase so that again there is a explicit way of avoiding the probleme, those upgrade should also be available at all time so that the player doesn't feel
+like they are trapt with a disaster coming 
+the worst disaster should be reducing the planet popuplation by 1 
+nothing should destroy the colony and there should be ample warning before any big disaster happen 
+
+those disaster will be seen at all time in the colonies crisis tab 
+(they will have there own special tab with mini event along the way and a way to slow the progress and to stop it ( maybethe player should be able to turn of that part) ) 
+
+1rst step of the mod : create the new negative impact of the condition ( this will be the base where the upgrade will build upon )
+
+2nd step of the mod : create the basic counter condition 
+
+3rd step of the mod : create the upgrade for the counter condition
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 												-------- 1 ------- 
+											Making the negative condition unique
+1 negative bonus idea
+2 positive bonus idea
+3 negative bonus number
+4 positive bonus number
+
+	- Thin Atmosphere (V,V,X,X)
+	- No Atmosphere (X,X,X,X)
+	- Cold (X,X,X,X)
+	- Extreme Cold (X,X,X,X)
+	- Darkness (X,X,X,X)
+	- Heat (X,X,X,X)
+	- Extreme Heat (X,X,X,X)
+	- Dense Atmosphere (X,X,X,X)
+	- Toxic Athmosphere (X,X,X,X)
+	- Poor light (X,X,X,X)
+	- Irradiated  (X,X,X,X)
+	- High Gravity (X,X,X,X)
+	- Low Gravity (X,X,X,X)
+	- Tectonic activity (X,X,X,X)
+	- Extreme Tectonic activity (X,X,X,X)
+	- Extreme Storm (X,X,X,X)
+	- Pollution (X,X,X,X)
+	- Meteor Impact (X,X,X,X)
+
+19 n idea (2 done)
+19 p idea (2 done)
+19 n number (0 done) 
+19 p number (0 done) 
+
+  -----------------------------------
+
+	[Thin Atmosphere]
+		Negative Effect :
+	- increase the demand for heavy machinery and Metal
+	- small negative inpact on planetary growth
+	- planet cannot grow past size 5
+	- reduce the planetary defence point
+		Positive Effect : 
+	- slightly increase accesiblity
+	- increase mining production
+
+
+
+
+
+
+
+
+
+
+
+
+

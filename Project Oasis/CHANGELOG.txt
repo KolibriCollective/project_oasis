@@ -1,0 +1,59 @@
+
+
+								|| PROJECT OASIS CHANGELOG ||
+
+
+
+we will be reaching version 0.10 when all of the planetary condition are updated and working
+
+0.5 when the planetary counter are added 
+
+1.00 when the colonies crisis that make them being able to be added to planet are fully functional
+
+EDIT : Version 0.001 > 
+
+	Added needed file for getting the mod to work,
+	this was based on the coding of Unkown skies(hopefully this is okay) Made by both Tartiflette (made the code) and Serenitis(created the assets),
+	started work on the new thin condition upgrade, 
+	most file are still completly empty,
+	this is absolutly not working and I don't know,
+	what I'm doing.
+	DISCLAIMER : the file organisation and quite a few function has be taken from the work of another mod 
+	the mod being UnkownSky, I have yet to have asked permission to do so and is willing to remove those same 
+	file that have been taken from the mod if aksed 
+	I will give apropriate information about this in the file that I have copied form the mod 
+	I will either get permission or create my own function before the mod will be uploaded 
+	considering my current advance this will take quite a while 
+added files : 
+
+OS.version
+mod_info.json
+icon.ico
+thin_athmosphere.java
+OS.jars
+market_condition.csv
+strings.json
+condition_gen_data.csv
+version_file.csv
+
+2025-11-16
+added files : 
+string.json (empty)
+OS_modPlugin.java (empty) 
+OS_txt.java (empty)
+
+files modfied : 
+
+thin_athmosphere.java :
+added some text for what need to be made for the file to be ready 
+
+strings.json : 
+created the "OS_Planetary_Condition_desc" string and
+added  : 
+"thin_atmosphere_ACCESSIBILTY_BONUS"
+"thin_athmophere_HEAVY_MACHINERUY_DEMAND"
+"thin_athmophere_METAL_DEMAND"
+
+OS_text.java : 
+added function function called OS_text
+

@@ -1,0 +1,10 @@
+{
+    "id": "OS",
+    "name": "Project Oasis",
+    "author": "Kolibri",
+	"version": {"major":'1', "minor":'0', "patch":'0.001'},
+    "description": "Enhance your journey into the unknown with a vastly expanded variety of planets and environments.",
+    "gameVersion": "0.98.1a-RC6",
+    "jars":["jars/OS.jar"],
+    "modPlugin":"data.scripts.OS.scripts",
+}

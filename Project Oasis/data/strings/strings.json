@@ -1,0 +1,9 @@
+
+
+{
+"OS_Planetary_Condition_desc":{ 
+    "thin_atmosphere_ACCESSIBILTY_BONUS":"due to the thin athmosphere, station and ships are able to safely orbit this planet much closer to the surface making the transport of good and people simpler and faster",
+    "thin_athmophere_HEAVY_MACHINERUY_DEMAND": "Atmosphere Pump run here all day making the few habitation become habitable for people living on this world",
+    "thin_athmophere_METAL_DEMAND" : "Metal is required here for the construction, and repair of the many decompression chamber and habitat"
+}
+}
