@@ -2,14 +2,10 @@ package com.fs.starfarer.api.campaign;
 
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
-import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Industries;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.api.impl.campaign.econ.impl.PopulationAndInfrastructure;
-import com.fs.starfarer.api.OS_txt;
-import com.fs.starfarer.api.Global;
 /*
  * those are the package that I believe we need 
  * I think we need to add them to our jar file for them to function properly tho
@@ -25,31 +21,29 @@ import com.fs.starfarer.api.Global;
  * I don't know what Misc does 
  */
 
-
 public class thin_athmosphere extends BaseHazardCondition {
 
     public final float ACCESSIBILITY_BONUS = 5f;
     public final int ORE_BONUS = 1;
     public final int HEAVY_MACHINERY_DEMAND = 1;
-    public final int METALS_DEMAND = 1; 
-
+    public final int METALS_DEMAND = 1;
 
     public void apply(String id) {
 
-        market.getAccessibilityMod().modifyFlat(id,ACCESSIBILITY_BONUS/100,txt("thin_atmosphere_ACCESSIBILTY_BONUS"));
+        market.getAccessibilityMod().modifyFlat(id,ACCESSIBILITY_BONUS/100,"");
 
         Industry industry = market.getIndustry(Industries.POPULATION);
         if(industry!=null){
-            industry.getDemand(Commodities.METALS).getQuantity().modifyMult(id + "_0", Commodities.METALS, METALS_DEMAND, txt("thin_athmophere_HEAVY_MACHINERUY_DEMAND"));
-            industry.getDemand(Commodities.HEAVY_MACHINERY).getQuantity().modifyMult(id + "_0", Commodities.HEAVY_MACHINERY, HEAVY_MACHINERY_DEMAND, txt("thin_athmophere_METAL_DEMAND"));
+            industry.getDemand(Commodities.METALS).getQuantity().modifyMult(id + "_0", METALS_DEMAND,"metal");
+            industry.getDemand(Commodities.HEAVY_MACHINERY).getQuantity().modifyMult(id + "_0", HEAVY_MACHINERY_DEMAND, "heavy machinery");
         }
         industry = market.getIndustry(Industries.MINING);
         if(industry!=null){
             if (industry.isFunctional()) {
-                industry.supply(id + "_0",Commodities.ORE, ORE_BONUS,"");
-                industry.supply(id + "_0",Commodities.RARE_ORE, ORE_BONUS,"");
-                industry.supply(id + "_0",Commodities.ORGANICS, ORE_BONUS,"");
-                industry.supply(id + "_0",Commodities.VOLATILES, ORE_BONUS,"");
+                industry.supply(id + "_0",Commodities.ORE, ORE_BONUS,"ore");
+                industry.supply(id + "_0",Commodities.RARE_ORE, ORE_BONUS,"rare ore");
+                industry.supply(id + "_0",Commodities.ORGANICS, ORE_BONUS,"organics");
+                industry.supply(id + "_0",Commodities.VOLATILES, ORE_BONUS,"volatiles");
             } 
             
             else {
@@ -63,6 +57,17 @@ public class thin_athmosphere extends BaseHazardCondition {
     }
     public void unapply(String id) {
         market.getAccessibilityMod().unmodifyFlat(id);
+    }
+
+    protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
+         super.createTooltipAfterDescription(tooltip, expanded);
+         tooltip.addPara("%s accessibility", 5.0F, Misc.getHighlightColor(), new String[]{"+5%"});
+         tooltip.addPara("%s additional machinery demand", 1, Misc.getHighlightColor(), new String[]{"+1"});
+         tooltip.addPara("%s additional metal demand", 1, Misc.getHighlightColor(), new String[]{"+1"});
+         tooltip.addPara("%s increased ore supply", 1, Misc.getHighlightColor(), new String[]{"+1"});
+         tooltip.addPara("%s increased rare ore supply", 1, Misc.getHighlightColor(), new String[]{"+1"});
+         tooltip.addPara("%s increased orgnics supply", 1, Misc.getHighlightColor(), new String[]{"+1"});
+         tooltip.addPara("%s increased volatiles supply", 1, Misc.getHighlightColor(), new String[]{"+1"});
     }
 }
 
@@ -103,4 +108,11 @@ public class thin_athmosphere extends BaseHazardCondition {
  * getAccessibilityMod isn't actually a function 
  * Supply isn't a commmand for industry ??
  * txt still does not work 
+ * 
+ * 2025-11-19 (00:04)
+ * 
+ * fixed both issue (getAccessibilityMod and Supply not functioning)
+ * txt doesn't really work still trying to understand why 
+ * added createTooltipAfterDescription to the file, I believe this is the command that make the modification show in game
+ * 
  */
