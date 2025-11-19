@@ -1,0 +1,22 @@
+{
+    "java.project.sourcePaths": ["Project_Oasis/src"],
+    "java.project.outputPath": "out\\vscode\\bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Program Files (x86)\\Fractal Softworks\\Starsector\\starsector-core\\starfarer.api.jar",
+        "c:\\Program Files (x86)\\Fractal Softworks\\Starsector\\starsector-core\\lwjgl.jar",
+        "c:\\Program Files (x86)\\Fractal Softworks\\Starsector\\starsector-core\\lwjgl_util.jar",
+        "c:\\Program Files (x86)\\Fractal Softworks\\Starsector\\starsector-core\\xstream-1.4.10.jar",
+        "c:\\Program Files (x86)\\Fractal Softworks\\Starsector\\mods\\LazyLib\\jars\\LazyLib.jar",
+        "c:\\Program Files (x86)\\Fractal Softworks\\Starsector\\mods\\MagicLib\\jars\\MagicLib.jar",
+        "c:\\Program Files (x86)\\Fractal Softworks\\Starsector\\mods\\zz GraphicsLib\\jars\\Graphics.jar"
+    ],
+    "java.configuration.runtimes": [
+        {
+            "name":"JavaSE-1.7",
+            "path":"C:\\Program Files\\Java\\JDK7",
+            "default": true
+        }
+    ],
+    "debug.javascript.autoAttachFilter": "smart"
+}

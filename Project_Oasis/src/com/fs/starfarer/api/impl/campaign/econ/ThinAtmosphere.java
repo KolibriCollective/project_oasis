@@ -1,11 +1,11 @@
-package com.fs.starfarer.api.campaign;
+package com.fs.starfarer.api.impl.campaign.econ;
 
 import com.fs.starfarer.api.campaign.econ.Industry;
-import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Industries;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.util.Misc;
+
 /*
  * those are the package that I believe we need 
  * I think we need to add them to our jar file for them to function properly tho
@@ -21,39 +21,43 @@ import com.fs.starfarer.api.util.Misc;
  * I don't know what Misc does 
  */
 
-public class thin_athmosphere extends BaseHazardCondition {
-
+public class ThinAtmosphere extends BaseHazardCondition {
+    
+    
     public final float ACCESSIBILITY_BONUS = 5f;
     public final int ORE_BONUS = 1;
-    public final int HEAVY_MACHINERY_DEMAND = 1;
-    public final int METALS_DEMAND = 1;
 
+    
     public void apply(String id) {
 
-        market.getAccessibilityMod().modifyFlat(id,ACCESSIBILITY_BONUS/100,"");
+        market.getHazard().modifyFlat(id,25/100f,"Thin Atmosphere");
+        market.getAccessibilityMod().modifyFlat(id,ACCESSIBILITY_BONUS/100,"Thin Atmosphere");
 
         Industry industry = market.getIndustry(Industries.POPULATION);
         if(industry!=null){
-            industry.getDemand(Commodities.METALS).getQuantity().modifyMult(id + "_0", METALS_DEMAND,"metal");
-            industry.getDemand(Commodities.HEAVY_MACHINERY).getQuantity().modifyMult(id + "_0", HEAVY_MACHINERY_DEMAND, "heavy machinery");
+            int  size = market.getSize();
+            float HEAVY_MACHINERY_DEMAND = (size - 3);
+            float METALS_DEMAND = (size - 3);
+            industry.getDemand(Commodities.METALS).getQuantity().modifyFlat(id + "_0", METALS_DEMAND,"Thin Atmosphere");
+            industry.getDemand(Commodities.HEAVY_MACHINERY).getQuantity().modifyFlat(id + "_0", HEAVY_MACHINERY_DEMAND, "Thin Atmosphere");
         }
         industry = market.getIndustry(Industries.MINING);
         if(industry!=null){
             if (industry.isFunctional()) {
-                industry.supply(id + "_0",Commodities.ORE, ORE_BONUS,"ore");
-                industry.supply(id + "_0",Commodities.RARE_ORE, ORE_BONUS,"rare ore");
-                industry.supply(id + "_0",Commodities.ORGANICS, ORE_BONUS,"organics");
-                industry.supply(id + "_0",Commodities.VOLATILES, ORE_BONUS,"volatiles");
+                if (market.getCommoditiesWithTag(Commodities.VOLATILES) !=null) { 
+                    industry.supply(id + "_0",Commodities.VOLATILES, ORE_BONUS,"Thin Atmosphere");
+                }
             } 
             
             else {
-                industry.getSupply(Commodities.ORE).getQuantity().unmodifyFlat(id + "_0");
-                industry.getSupply(Commodities.RARE_ORE).getQuantity().unmodifyFlat(id + "_0");
-                industry.getSupply(Commodities.ORGANICS).getQuantity().unmodifyFlat(id + "_0");
                 industry.getSupply(Commodities.VOLATILES).getQuantity().unmodifyFlat(id + "_0");
             }
         }
 
+        industry = market.getIndustry(Industries.WAYSTATION);
+        if (industry!=null){
+             market.getAccessibilityMod().modifyFlat(id,ACCESSIBILITY_BONUS/100,"Thin Atmosphere");
+        }
     }
     public void unapply(String id) {
         market.getAccessibilityMod().unmodifyFlat(id);
@@ -62,12 +66,9 @@ public class thin_athmosphere extends BaseHazardCondition {
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
          super.createTooltipAfterDescription(tooltip, expanded);
          tooltip.addPara("%s accessibility", 5.0F, Misc.getHighlightColor(), new String[]{"+5%"});
-         tooltip.addPara("%s additional machinery demand", 1, Misc.getHighlightColor(), new String[]{"+1"});
-         tooltip.addPara("%s additional metal demand", 1, Misc.getHighlightColor(), new String[]{"+1"});
-         tooltip.addPara("%s increased ore supply", 1, Misc.getHighlightColor(), new String[]{"+1"});
-         tooltip.addPara("%s increased rare ore supply", 1, Misc.getHighlightColor(), new String[]{"+1"});
-         tooltip.addPara("%s increased orgnics supply", 1, Misc.getHighlightColor(), new String[]{"+1"});
-         tooltip.addPara("%s increased volatiles supply", 1, Misc.getHighlightColor(), new String[]{"+1"});
+         tooltip.addPara("%s Heavy Machinery (Population & Infrastructure)", 1, Misc.getHighlightColor(), new String[]{"+1"});
+         tooltip.addPara("%s Metal (Population & Infrastructure)", 1, Misc.getHighlightColor(), new String[]{"+1"});
+         tooltip.addPara("%s Volatiles (Mining)", 1, Misc.getHighlightColor(), new String[]{"+1"});
     }
 }
 
@@ -84,6 +85,11 @@ public class thin_athmosphere extends BaseHazardCondition {
  * 
  * 2. we will make sure that the mod has access to the function and figure out if there is any probleme 
  * 
+ * the mod access this file trought the planetary_condition.csv file 
+ * to get the mod to actually do anything we need to make it so we overwrite that file 
+ * possible way to do that : 
+ * currently we don't know where and when the file is called but it should be a safe asumption to think it's in the Modplugin file and 
+ * at onNewGame has that is the function that does all of the stuff when creating a new game 
  * 
  * 
  * 
@@ -114,5 +120,14 @@ public class thin_athmosphere extends BaseHazardCondition {
  * fixed both issue (getAccessibilityMod and Supply not functioning)
  * txt doesn't really work still trying to understand why 
  * added createTooltipAfterDescription to the file, I believe this is the command that make the modification show in game
+ * 
+ * 2025-11-19 (5:45)
+ * 
+ * the test is done 
+ * we have created the first modification in the game and it work 
+ * what now 
+ * well we need to figure out how to actually get all of the file to work in .class / jar file 
+ * and expend the mod to encompass to all of the condition 
+ * the hardest part to 0.10 is done and it shouldn't take long to get to 0.1.0
  * 
  */
