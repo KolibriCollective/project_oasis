@@ -2,7 +2,7 @@
     "id": "OS",
     "name": "Project Oasis",
     "author": "Kolibri",
-	"version": "0.0.3",
+	"version": "0.0.4",
     "description": "Add new demand, supply and bonus or malus to accesiblity / hazard to planetary condion with the objectif of making every base game condition more intersting ",
     "gameVersion": "0.98.1a",
     "jars":[""],
